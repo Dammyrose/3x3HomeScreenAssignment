@@ -16,6 +16,8 @@ float xButton6, yButton6, widthButton6, heightButton6;
 float xButton7, yButton7, widthButton7, heightButton7;
 float xButton8, yButton8, widthButton8, heightButton8;
 float xButton9, yButton9, widthButton9, heightButton9;
+float xquitButton, yquitButton, widthQuitButton, heightQuitButton;
+color red = #EA0E0E, white = #FFF5F5, resetButtonColour=#FFFFFF, quitButtonFill;
 float smallerDimension;
 //
 void setup() {
@@ -74,23 +76,42 @@ void setup() {
   widthButton9 = widthButton1;
   heightButton9 = widthButton1;
   //
+  //Quit button Dimension
+  xquitButton =xCenter ; 
+  yquitButton = width*24/50;
+  widthQuitButton = width*1/9;
+  heightQuitButton = height*1/9;
+  //
 }//End setup
 //
 void draw() 
 {
-  rect(xButton9, yButton9, widthButton9, heightButton9);
-  rect(xButton8, yButton8, widthButton8, heightButton8);
-  rect(xButton7, yButton7, widthButton7, heightButton7);
-  rect(xButton6, yButton6, widthButton6, heightButton6);
-  rect(xButton5, yButton5, widthButton5, heightButton5);
-  rect(xButton4, yButton4, widthButton4, heightButton4);
-  rect(xButton3, yButton3, widthButton3, heightButton3);
-  rect(xButton2, yButton2, widthButton2, heightButton2);
   rect(xButton1, yButton1, widthButton1, heightButton1);
+  rect(xButton2, yButton2, widthButton2, heightButton2);
+  rect(xButton3, yButton3, widthButton3, heightButton3);
+  rect(xButton4, yButton4, widthButton4, heightButton4);
+  rect(xButton5, yButton5, widthButton5, heightButton5);
+  rect(xButton6, yButton6, widthButton6, heightButton6);
+  rect(xButton7, yButton7, widthButton7, heightButton7);
+  rect(xButton8, yButton8, widthButton8, heightButton8);
+  rect(xButton9, yButton9, widthButton9, heightButton9);
+  //
+  if(mouseX>xquitButton && mouseX<xquitButton+widthQuitButton && mouseY>yquitButton && mouseY<yquitButton+heightQuitButton) {
+    quitButtonFill= red;
+  }else{
+    quitButtonFill = white;
+  }//End Hover-Over 
+  fill(quitButtonFill); //2-colours to start, remember that nightMode adds choice
+  ellipse(xquitButton, yquitButton, widthQuitButton, heightQuitButton);
+  fill(resetButtonColour);
 }//End draw
 //
 void keyPressed() {}//End keyPressed
 //
-void mousePressed() {}//End mousePressed
+void mousePressed() 
+{
+  if(mouseX>xquitButton && mouseX<xquitButton+widthQuitButton && mouseY>yquitButton && mouseY<yquitButton+heightQuitButton ) exit();
+  //
+}//End mousePressed
 //
 //End MAIN Program 
