@@ -82,6 +82,8 @@ void setup() {
   widthQuitButton = width*1/9;
   heightQuitButton = height*1/9;
   //
+  //Population of image 
+  pic1 = loadImage()
 }//End setup
 //
 void draw() 
