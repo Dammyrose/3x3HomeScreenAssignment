@@ -19,6 +19,11 @@ float xButton9, yButton9, widthButton9, heightButton9;
 float xquitButton, yquitButton, widthQuitButton, heightQuitButton;
 color red = #EA0E0E, white = #FFF5F5, resetButtonColour=#FFFFFF, quitButtonFill;
 float smallerDimension;
+PImage pic1;
+float imageX1, imageY1, imageWidth1, imageHeight1, imageLargerDimension1, imageSmallerDimension1, imageWidthRatio1=0.0, imageHeightRatio1=0.0;
+float picWidthAdjusted1, picHeightAdjusted1;
+Boolean widthLarger1=false, heightLarger1=false;
+Boolean widthLarger2=false, heightLarger2=false;
 //
 void setup() {
   size(900,700); //Landscape
@@ -83,12 +88,36 @@ void setup() {
   heightQuitButton = height*1/9;
   //
   //Population of image 
-  pic1 = loadImage()
+  pic1 = loadImage("../Images Used/Soil.jpg");//Dimensions: width 2121, height 1414
+  // 
+  int picWidth1 = 2121;
+  int picHeight1 = 1414;
+    //
+  if ( picWidth1 >= picHeight1 ) { //Image Dimension Comparison
+    //True if Landscape or Square
+    imageLargerDimension1 = picWidth1;
+    imageSmallerDimension1 = picHeight1;
+    widthLarger1 = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension1 = picHeight1;
+    imageSmallerDimension1 = picWidth1;
+    heightLarger1 = true;
+  }//End Image Dimension Comparison
+  println(imageSmallerDimension1, imageLargerDimension1, widthLarger1, heightLarger1); //Verify variables details
+  //Aspect Ratio
+  //Note: single line IFs can be summarized into IF-ELSE or IF-ElseIF-Else
+  //Computer chooses which formulae to execute
+  if ( widthLarger1 == true ) imageWidthRatio1 = imageLargerDimension1 / imageLargerDimension1;
+  if ( widthLarger1 == true ) imageHeightRatio1 = imageSmallerDimension1 / imageLargerDimension1;
+  if ( heightLarger1 == true ) imageWidthRatio1 = imageSmallerDimension1 / imageLargerDimension1;
+  if ( heightLarger1 == true ) imageHeightRatio1 = imageLargerDimension1 / imageLargerDimension1;
 }//End setup
 //
 void draw() 
 {
-  rect(xButton1, yButton1, widthButton1, heightButton1);
+  //rect(xButton1, yButton1, widthButton1, heightButton1);
+  image(pic1, xButton1, yButton1, widthButton1, heightButton1);
   rect(xButton2, yButton2, widthButton2, heightButton2);
   rect(xButton3, yButton3, widthButton3, heightButton3);
   rect(xButton4, yButton4, widthButton4, heightButton4);
