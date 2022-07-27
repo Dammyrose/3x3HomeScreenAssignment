@@ -39,7 +39,7 @@ void setup() {
   xButton1 = xCenter - width/2 ;
   yButton1 = yCenter - height/2;
   widthButton1 = width*1/3;
-  heightButton1 = height*1/2;
+  heightButton1 = height*1/3;
   //
   xButton2 =xButton1 ; 
   yButton2 = 240;
