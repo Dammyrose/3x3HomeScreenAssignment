@@ -7,6 +7,13 @@ import ddf.minim.ugens.*;
 
 //
 //Global Variables
+//
+String title = "Tap here to start. Tap each photo as they appear";
+float xButton9, yButton9, widthButton9, heightButton9;
+PFont titleFont;
+color purple=#2C08FF, resetDefaultInk=#FFFFFF; //not nightMode friendly
+int titleSize;
+//
 float xButton1, yButton1, widthButton1, heightButton1;
 float xButton2, yButton2, widthButton2, heightButton2;
 float xButton3, yButton3, widthButton3, heightButton3;
@@ -15,7 +22,6 @@ float xButton5, yButton5, widthButton5, heightButton5;
 float xButton6, yButton6, widthButton6, heightButton6;
 float xButton7, yButton7, widthButton7, heightButton7;
 float xButton8, yButton8, widthButton8, heightButton8;
-float xButton9, yButton9, widthButton9, heightButton9;
 float xquitButton, yquitButton, widthQuitButton, heightQuitButton;
 color red = #EA0E0E, white = #FFF5F5, resetButtonColour=#FFFFFF, quitButtonFill;
 float smallerDimension;
@@ -44,11 +50,6 @@ Boolean widthLarger5=false, heightLarger5=false;
 Boolean widthLarger6=false, heightLarger6=false;
 Boolean widthLarger7=false, heightLarger7=false;
 Boolean widthLarger8=false, heightLarger8=false;
-//
-String title = "Start";
-PFont titleFont;
-color purple=#2C08FF, resetDefaultInk=#FFFFFF; //not nightMode friendly
-int titleSize;
 //
 //
 void setup() {
@@ -290,7 +291,7 @@ void setup() {
   //Fonts from OS (Operating System)
   String[] fontList = PFont.list(); //To list all fonts available on OS
   printArray(fontList); //For Listing all possible fonts to choose from, then createFont
-  titleFont = createFont("Webdings", 55); //Verify the font exists in Processing.JAVA
+  titleFont = createFont("Tahoma", 50); //Verify the font exists in Processing.JAVA
   // Tools / Create Font / Find Font in list to verify / Do not press "OK", known bug
   //
   //Layout our text space and typographical features
@@ -298,18 +299,18 @@ void setup() {
   //
 }//End setup
 //
-void draw() 
-{
+void draw() {
+  //
   fill(purple); //Ink, hexidecimal copied from Color Selector
-  textAlign( CENTER, CENTER); //Align X*Y, see Processing.org / Reference
+  textAlign(CENTER, CENTER); //Align X*Y, see Processing.org / Reference
   //Values: [ LEFT | CENTER | Right ] & [ TOP | CENTER | BOTTOM | BASELINE ]
-  titleSize = 40; //Change this number until it fits
+  titleSize = 30; //Change this number until it fits
   textFont(titleFont, titleSize);
   text(title, xButton9, yButton9, widthButton9, heightButton9);
   fill(resetDefaultInk);
   //
   //rect(xButton1, yButton1, widthButton1, heightButton1);
-  image(pic1, xButton1, yButton1, widthButton1, heightButton1);
+  //image(pic1, xButton1, yButton1, widthButton1, heightButton1);
   //image(pic2, xButton2, yButton2, widthButton2, heightButton2);
   //image(pic3, xButton3, yButton3, widthButton3, heightButton3);
   //image(pic4, xButton4, yButton4, widthButton4, heightButton4);
@@ -318,7 +319,6 @@ void draw()
   //image(pic7, xButton7, yButton7, widthButton7, heightButton7);
   //image(pic8, xButton8, yButton8, widthButton8, heightButton8);
   //
-  
   if(mouseX>xquitButton && mouseX<xquitButton+widthQuitButton && mouseY>yquitButton && mouseY<yquitButton+heightQuitButton) {
     quitButtonFill= red;
   }else{
@@ -327,6 +327,7 @@ void draw()
   fill(quitButtonFill); //2-colours to start, remember that nightMode adds choice
   ellipse(xquitButton, yquitButton, widthQuitButton, heightQuitButton);
   fill(resetButtonColour);
+  //
 }//End draw
 //
 void keyPressed() {}//End keyPressed
@@ -335,6 +336,7 @@ void mousePressed()
 {
   if(mouseX>xquitButton && mouseX<xquitButton+widthQuitButton && mouseY>yquitButton && mouseY<yquitButton+heightQuitButton ) exit();
   //
+  if(mouseX>xButton9 && mouseX<xButton9+widthButton9 && mouseY>yButton9 && mouseY<yButton9+heightButton9) image(pic1, xButton1, yButton1, widthButton1, heightButton1);
   if(mouseX>xButton1 && mouseX<xButton1+widthButton1 && mouseY>yButton1 && mouseY<yButton1+heightButton1 ) image(pic2, xButton2, yButton2, widthButton2, heightButton2);
   if(mouseX>xButton2 && mouseX<xButton2+widthButton2 && mouseY>yButton2 && mouseY<yButton2+heightButton2 ) image(pic3, xButton3, yButton3, widthButton3, heightButton3);
   if(mouseX>xButton3 && mouseX<xButton3+widthButton3 && mouseY>yButton3 && mouseY<yButton3+heightButton3 ) image(pic4, xButton4, yButton4, widthButton4, heightButton4);
@@ -342,6 +344,7 @@ void mousePressed()
   if(mouseX>xButton5 && mouseX<xButton5+widthButton5 && mouseY>yButton5 && mouseY<yButton5+heightButton5 ) image(pic6, xButton6, yButton6, widthButton6, heightButton6);
   if(mouseX>xButton6 && mouseX<xButton6+widthButton6 && mouseY>yButton6 && mouseY<yButton6+heightButton6 ) image(pic7, xButton7, yButton7, widthButton7, heightButton7);
   if(mouseX>xButton7 && mouseX<xButton7+widthButton7 && mouseY>yButton7 && mouseY<yButton7+heightButton7 ) image(pic8, xButton8, yButton8, widthButton8, heightButton8);
+  if(mouseX>xButton8 && mouseX<xButton8+widthButton8 && mouseY>yButton8 && mouseY<yButton8+heightButton8 ) rect(xButton9, yButton9, widthButton9, heightButton9);
   //
 }//End mousePressed
 //
