@@ -45,6 +45,12 @@ Boolean widthLarger6=false, heightLarger6=false;
 Boolean widthLarger7=false, heightLarger7=false;
 Boolean widthLarger8=false, heightLarger8=false;
 //
+String title = "Start";
+PFont titleFont;
+color purple=#2C08FF, resetDefaultInk=#FFFFFF; //not nightMode friendly
+int titleSize;
+//
+//
 void setup() {
   size(900,700); //Landscape
   //
@@ -280,10 +286,28 @@ void setup() {
   if ( widthLarger8 == true ) imageHeightRatio8 = imageSmallerDimension8/ imageLargerDimension8;
   if ( heightLarger8== true ) imageWidthRatio8= imageSmallerDimension8/ imageLargerDimension8;
   if ( heightLarger8== true ) imageHeightRatio8= imageLargerDimension8 / imageLargerDimension8;
+  //
+  //Fonts from OS (Operating System)
+  String[] fontList = PFont.list(); //To list all fonts available on OS
+  printArray(fontList); //For Listing all possible fonts to choose from, then createFont
+  titleFont = createFont("Webdings", 55); //Verify the font exists in Processing.JAVA
+  // Tools / Create Font / Find Font in list to verify / Do not press "OK", known bug
+  //
+  //Layout our text space and typographical features
+  rect(xButton9, yButton9, widthButton9, heightButton9);
+  //
 }//End setup
 //
 void draw() 
 {
+  fill(purple); //Ink, hexidecimal copied from Color Selector
+  textAlign( CENTER, CENTER); //Align X*Y, see Processing.org / Reference
+  //Values: [ LEFT | CENTER | Right ] & [ TOP | CENTER | BOTTOM | BASELINE ]
+  titleSize = 40; //Change this number until it fits
+  textFont(titleFont, titleSize);
+  text(title, xButton9, yButton9, widthButton9, heightButton9);
+  fill(resetDefaultInk);
+  //
   //rect(xButton1, yButton1, widthButton1, heightButton1);
   image(pic1, xButton1, yButton1, widthButton1, heightButton1);
   //image(pic2, xButton2, yButton2, widthButton2, heightButton2);
@@ -293,8 +317,8 @@ void draw()
   //image(pic6, xButton6, yButton6, widthButton6, heightButton6);
   //image(pic7, xButton7, yButton7, widthButton7, heightButton7);
   //image(pic8, xButton8, yButton8, widthButton8, heightButton8);
-  rect(xButton9, yButton9, widthButton9, heightButton9);
   //
+  
   if(mouseX>xquitButton && mouseX<xquitButton+widthQuitButton && mouseY>yquitButton && mouseY<yquitButton+heightQuitButton) {
     quitButtonFill= red;
   }else{
